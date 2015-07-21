@@ -1,0 +1,6 @@
+---
+- name: reload exports
+  shell: /usr/bin/exportfs -rav
+
+- name: restart nfs-server
+  service: name=nfs-server state=restarted
