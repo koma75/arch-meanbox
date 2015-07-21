@@ -1,0 +1,8 @@
+---
+
+- name: make sure mongodb is installed
+  pacman: name=mongodb state=present
+
+- name: start mongodb service
+  service: name=mongodb state=running enabled=yes
+

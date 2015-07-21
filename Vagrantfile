@@ -17,18 +17,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--ostype", "ArchLinux_64", "--ioapic", "on"]
   end
 
-  config.vm.synced_folder ".", "/vagrant", :mount_options => ['dmode=755', 'fmode=664']
+  config.vm.synced_folder ".", "/vagrant", :mount_options => ['dmode=755', 'fmode=754']
 
   # Setup Ansible share folders and the provision script
   config.vm.synced_folder "ansible/", "/srv/ansible/", :mount_options => ['dmode=755', 'fmode=664']
   config.vm.provision "shell", :path => "provision.sh"
 
   config.vm.network "private_network", ip: "192.168.33.10"
-  if Vagrant.has_plugin?("vagrant-proxyconf")
-    config.proxy.http = "#{ENV['PROXY_HTTP']}"
-    config.proxy.https = "#{ENV['PROXY_HTTPS']}"
-    config.proxy.no_proxy = "#{ENV['PROXY_NO_PROXY']}"
-  end
+  #if Vagrant.has_plugin?("vagrant-proxyconf")
+  #  config.proxy.http = "#{ENV['PROXY_HTTP']}"
+  #  config.proxy.https = "#{ENV['PROXY_HTTPS']}"
+  #  config.proxy.no_proxy = "#{ENV['PROXY_NO_PROXY']}"
+  #end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

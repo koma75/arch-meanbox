@@ -1,0 +1,24 @@
+local server=""
+local port="8080"
+local username=""
+local password=""
+
+if [[ $username != "" ]]; then
+  local pre="$username:$password@"
+fi
+
+if [[ $server != "" ]]; then
+  export http_proxy="http://$pre$server:$port/"
+  export https_proxy=$http_proxy
+  export ftp_proxy=$http_proxy
+  export rsync_proxy=$http_proxy
+  # ruby gem needs user and password in separate env
+  export http_proxy_user="$username"
+  export http_proxy_pass="$password"
+  # some programs look for capitalized versions
+  export HTTP_PROXY=$http_proxy
+  export HTTPS_PROXY=$http_proxy
+  export FTP_PROXY=$http_proxy
+  export RSYNC_PROXY=$http_proxy
+  export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
+fi

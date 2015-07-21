@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 # setup proxy stuff
-if ! [ -f "/etc/profile.d/proxy.sh" ]; then
+if ! [ -f "/etc/profile.d/setproxy.sh" ]; then
   # if it is not already set
-  if [ -f "/vagrant/proxy.sh" ]; then
-    cp /vagrant/proxy.sh /etc/profile.d/
-    chmod 755 /etc/profile.d/proxy.sh
-    /etc/profile.d/proxy.sh
-    /vagrant/proxy-sudoer.sh
+  if [ -f "/vagrant/setproxy.sh" ]; then
+    echo "proxy setting not found adding setproxy.sh"
+    sudo cp /vagrant/setproxy.sh /etc/profile.d/
+    sudo chmod 755 /etc/profile.d/setproxy.sh
+    source /etc/profile.d/setproxy.sh
+    sudo chmod 755 /vagrant/proxy-sudoer.sh
+    sudo bash /vagrant/proxy-sudoer.sh
+    # use curl to prevent connection time-outs
+    sudo sed -i '/^#XferCommand.*curl/s/^#//' /etc/pacman.conf
   fi
 fi
 

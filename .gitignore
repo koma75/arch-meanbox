@@ -30,3 +30,5 @@ node_modules
 proxy.sh
 ansible/.vault_pass.txt
 .env
+setproxy.sh
+.vagrant/
