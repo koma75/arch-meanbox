@@ -32,3 +32,5 @@ ansible/.vault_pass.txt
 .env
 setproxy.sh
 .vagrant/
+apps/*
+!apps/README.md
