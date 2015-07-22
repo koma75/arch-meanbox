@@ -43,7 +43,10 @@ if ! [ -f "/srv/ansible/playbook.yml" ]; then
   exit -1
 fi
 
+# if you have any ansible-vault encrypted files, uncomment the last line
+# and add the ./ansible/.vault_pass.txt file and store the password for the
+# encrypted file
 echo "running: ansible-playbook -i /srv/ansible/hosts /srv/ansible/playbook.yml"
 ansible-playbook \
   -i /srv/ansible/hosts /srv/ansible/playbook.yml \
-  --vault-password-file /srv/ansible/.vault_pass.txt
+  #--vault-password-file /srv/ansible/.vault_pass.txt
