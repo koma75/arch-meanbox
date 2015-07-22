@@ -18,6 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.synced_folder ".", "/vagrant", :mount_options => ['dmode=755', 'fmode=754']
+  config.vm.synced_folder "apps", "/srv/apps/"
 
   # Setup Ansible share folders and the provision script
   config.vm.synced_folder "ansible/", "/srv/ansible/", :mount_options => ['dmode=755', 'fmode=664']
