@@ -1,0 +1,22 @@
+---
+- name: turn off swap for the time being
+  command: swapoff /swapfile
+  ignore_errors: yes
+
+- name: remove previouse swapfile
+  file: path=/swapfile state=absent
+
+- name: create new swapfile
+  command: fallocate -l 1G /swapfile
+
+- name: format the file for swap
+  command: mkswap /swapfile
+
+- name: change swapfile permissions
+  file: path=/swapfile owner=root group=root mode=0600
+
+- name: add the file to swap
+  command: swapon /swapfile
+
+- name: write swap entry in fstab
+  mount: name=none src=/swapfile fstype=swap opts=sw passno=0 dump=0 state=present

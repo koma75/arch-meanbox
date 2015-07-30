@@ -4,6 +4,7 @@
   connection: local
   sudo: yes
   roles:
+    - { role: swapon, tags: "swapon" }
     - { role: mongodb, tags: "mongodb" }
     - { role: nodejs, tags: "nodejs" }
     # - { role: common, tags: "common" }
