@@ -7,7 +7,7 @@
   file: path=/swapfile state=absent
 
 - name: create new swapfile
-  command: fallocate -l 1G /swapfile
+  command: fallocate -l {{ swapfile_size }} /swapfile
 
 - name: format the file for swap
   command: mkswap /swapfile
