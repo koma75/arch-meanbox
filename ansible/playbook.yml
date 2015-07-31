@@ -4,11 +4,10 @@
   connection: local
   sudo: yes
   roles:
+    - { role: common, tags: "common" }
     - { role: swapon, tags: "swapon" }
     - { role: mongodb, tags: "mongodb" }
     - { role: nodejs, tags: "nodejs" }
-    # - { role: common, tags: "common" }
-    # - { role: common, tags: "common" }
     # - { role: testbed, tags: "testbed" }
     # - { role: webserver, tags: "webserver" }
     # - { role: samba, tags: "samba" }

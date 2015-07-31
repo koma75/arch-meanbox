@@ -1,7 +1,13 @@
 ---
 
+- name: make sure pacman database is up to date
+  pacman: update_cache=yes
+
 - name: make sure curl is at the latest version
   pacman: name=curl state=present
 
 - name: make sure wget is at the latest version
   pacman: name=wget state=present
+
+- name: make sure git is installed
+  pacman: name=git state=present

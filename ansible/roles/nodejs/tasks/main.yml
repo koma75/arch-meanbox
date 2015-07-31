@@ -3,3 +3,5 @@
 - name: make sure nodejs is installed
   pacman: name=nodejs state=present
 
+- name: make sure npm is installed
+  pacman: name=npm state=present
